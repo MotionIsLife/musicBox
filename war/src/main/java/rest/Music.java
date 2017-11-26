@@ -1,5 +1,6 @@
 package rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import vo.Track;
 
 import javax.ws.rs.GET;
@@ -9,6 +10,10 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/json/metallica")
 public class Music {
+
+    @Autowired
+    private Calculate calculate;
+
     @GET
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
