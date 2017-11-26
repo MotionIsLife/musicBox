@@ -49,6 +49,11 @@
             <artifactId>jersey-json</artifactId>
             <version>1.8</version>
         </dependency>
+        <dependency>
+            <groupId>ru.motionislife</groupId>
+            <artifactId>businessLogic</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>musicBox</finalName>

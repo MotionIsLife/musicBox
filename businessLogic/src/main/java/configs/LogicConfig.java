@@ -1,3 +1,6 @@
+package configs;
+
+import business.Calculate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
