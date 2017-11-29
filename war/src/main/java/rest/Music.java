@@ -2,31 +2,31 @@ package rest;
 
 import business.Calculate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import vo.Track;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
-@Controller
-@Path("/json/metallica")
+@RestController
+@RequestMapping("/json/metallica")
 public class Music {
 
     @Autowired
     private Calculate calculate;
 
-    @GET
-    @Path("/get")
-    @Produces(MediaType.APPLICATION_JSON)
+    @RequestMapping(value = "/get", method = RequestMethod.GET, produces = { "application/json" })
     public Track getTrackInJSON() {
 
         Track track = new Track();
         track.setTitle("Enter Sandman");
         track.setSinger("Metallica");
-
         return track;
-
     }
+
+    @GetMapping("/get/{id}")
+    public @ResponseBody ResponseEntity<Track> getPersonById(@PathVariable String id){
+        Track track = new Track();
+        track.setTitle("Enter Sandman");
+        track.setSinger("Metallica");
+        return new ResponseEntity<Track>(track,HttpStatus.OK);   }
 }
