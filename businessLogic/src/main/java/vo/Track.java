@@ -1,10 +1,7 @@
 package vo;
 
-import org.springframework.stereotype.Service;
-
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.io.Serializable;
 
 @XmlRootElement(name = "Track")
 public class Track {
