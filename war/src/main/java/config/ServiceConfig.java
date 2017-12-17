@@ -12,17 +12,5 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan("business")
 public class ServiceConfig {
-    @Bean
-    public DataSource hsqlDataSource() {
-        return new EmbeddedDatabaseBuilder()
-                .setType(EmbeddedDatabaseType.HSQL)
-                .setScriptEncoding("UTF-8")
-                .addScript("hsql-data.sql")
-                .build();
-    }
 
-    @Bean
-    public JdbcTemplate getJdbcTemplate(DataSource dataSource) {
-        return new JdbcTemplate(dataSource);
-    }
 }
