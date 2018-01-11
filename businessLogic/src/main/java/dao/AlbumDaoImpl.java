@@ -1,4 +1,4 @@
-package dao.impl;
+package dao;
 
 import com.sun.org.apache.bcel.internal.generic.ALOAD;
 import dao.AbstractDao;
@@ -14,9 +14,6 @@ import java.util.List;
 
 @Repository("albumDao")
 public class AlbumDaoImpl extends AbstractDao implements AlbumDao{
-
-/*    @PersistenceContext
-    private EntityManager entityManager;*/
 
     @Override
     public void createAlbum(Album album) {

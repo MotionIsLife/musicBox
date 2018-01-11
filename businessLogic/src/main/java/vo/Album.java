@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Table(name = "Album")
 public class Album implements Serializable{
 
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;

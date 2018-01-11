@@ -1,6 +1,7 @@
 package config;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.model.naming.ImplicitNamingStrategy;
 import org.hibernate.ejb.HibernatePersistence;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -24,7 +25,7 @@ import java.util.Properties;
 @ComponentScan("config")
 @ComponentScan("service")
 @PropertySource("classpath:app.properties")
-@EnableJpaRepositories("dao")
+/*@EnableJpaRepositories("dao")*/
 public class DataConfig {
 
     private static final String PROP_DATABASE_DRIVER = "db.driver";
@@ -66,7 +67,7 @@ public class DataConfig {
     public LocalSessionFactoryBean entityManagerFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.websystique.spring.model" });
+        sessionFactory.setPackagesToScan(new String[] { "vo" });
         sessionFactory.setHibernateProperties(getHibernateProperties());
         return sessionFactory;
         /*LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
