@@ -1,21 +1,26 @@
 package dao.impl;
 
+import com.sun.org.apache.bcel.internal.generic.ALOAD;
+import dao.AbstractDao;
 import dao.AlbumDao;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import vo.Album;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
-@Repository
-public class AlbumDaoImpl implements AlbumDao{
+@Repository("albumDao")
+public class AlbumDaoImpl extends AbstractDao implements AlbumDao{
 
-    @PersistenceContext
-    private EntityManager entityManager;
+/*    @PersistenceContext
+    private EntityManager entityManager;*/
 
     @Override
-    public long createAlbum(Album album) {
-        return 0;
+    public void createAlbum(Album album) {
+        persist(album);
     }
 
     @Override
@@ -24,12 +29,20 @@ public class AlbumDaoImpl implements AlbumDao{
     }
 
     @Override
-    public long updateAlbum(Album album) {
-        return 0;
+    public List<Album> findAllAlbums() {
+        Criteria criteria = getSession().createCriteria(Album.class);
+        return (List<Album>) criteria.list();
     }
 
     @Override
-    public long deleteAlbum(long id) {
-        return 0;
+    public void updateAlbum(Album album) {
+        getSession().update(album);
+    }
+
+    @Override
+    public void deleteAlbum(long id) {
+        Query query = getSession().createSQLQuery("delete from Album where id = :id");
+        query.setString("id", String.valueOf(id));
+        query.executeUpdate();
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.web.bind.annotation.*;
+import service.impl.AlbumServiceImpl;
 import vo.Album;
 import vo.Track;
 
@@ -18,10 +19,10 @@ public class Music {
     private Calculate calculate;
 
     @Autowired
-    EmbeddedDatabase embeddedDatabase;
+    ApplicationContext applicationContext;
 
     @Autowired
-    ApplicationContext applicationContext;
+    private AlbumServiceImpl albumService;
 
     @RequestMapping(value = "/get")
     public @ResponseBody Album getTrackInJSON() {
