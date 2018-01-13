@@ -30,7 +30,7 @@ public class Music {
         Album album = new Album();
         album.setAge("10");
         album.setName("Album 1");
-
+        albumService.finAllAlbums().stream().forEach(System.out::println);
         return album;
     }
 

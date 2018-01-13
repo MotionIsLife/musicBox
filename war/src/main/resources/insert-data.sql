@@ -1,0 +1,1 @@
+INSERT INTO ALBUM VALUES(1, 'The Black Album', '1991');
