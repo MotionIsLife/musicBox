@@ -1,10 +1,11 @@
-package dao;
+package dao.impl;
 
 import com.sun.org.apache.bcel.internal.generic.ALOAD;
 import dao.AbstractDao;
 import dao.AlbumDao;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 import vo.Album;
 
@@ -22,7 +23,9 @@ public class AlbumDaoImpl extends AbstractDao implements AlbumDao{
 
     @Override
     public Album getAlbum(long id) {
-        return null;
+        Criteria criteria = getSession().createCriteria(Album.class);
+        criteria.add(Restrictions.eq("id", id));
+        return (Album) criteria.uniqueResult();
     }
 
     @Override

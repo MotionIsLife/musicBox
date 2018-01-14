@@ -8,37 +8,66 @@ import java.io.Serializable;
 public class Album implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "group")
+    private String group;
 
-    @Column(name = "age")
-    private String age;
+    @Column(name = "nameAlbum")
+    private String nameAlbum;
 
-    public String getName() {
-        return name;
+    @Column(name = "year")
+    private String year;
+
+    public Album() { }
+
+    public Album(String group, String nameAlbum, String year) {
+        this.group = group;
+        this.nameAlbum = nameAlbum;
+        this.year = year;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getGroup() {
+        return group;
     }
 
-    public String getAge() {
-        return age;
+    public void setGroup(String group) {
+        this.group = group;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public String getNameAlbum() {
+        return nameAlbum;
     }
 
-    public long getId() {
+    public void setNameAlbum(String nameAlbum) {
+        this.nameAlbum = nameAlbum;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", group='" + group + '\'' +
+                ", nameAlbum='" + nameAlbum + '\'' +
+                ", year='" + year + '\'' +
+                '}';
     }
 }
