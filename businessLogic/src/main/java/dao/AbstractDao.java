@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.hibernate.Session;
 
 public abstract class AbstractDao {
-    @Autowired
+/*    @Autowired*/
     private SessionFactory sessionFactory;
 
     protected Session getSession() {

@@ -5,6 +5,9 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "ALBUM")
+@NamedQueries({
+        @NamedQuery(name = "Album.findAllAlbums", query = "select a from Album a")
+})
 public class Album {
 
     @Id
