@@ -19,6 +19,7 @@
         <amq.version>5.4.2</amq.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
         <springframework.version>4.3.9.RELEASE</springframework.version>
+        <spring-tx.version>5.0.2.RELEASE</spring-tx.version>
     </properties>
 
     <dependencyManagement>
@@ -64,9 +65,11 @@
                 <artifactId>spring-jms</artifactId>
                 <version>${springframework.version}</version>
             </dependency>
-
-
-
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring-tx.version}</version>
+            </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>

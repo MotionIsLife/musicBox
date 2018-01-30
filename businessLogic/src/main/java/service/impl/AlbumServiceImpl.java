@@ -9,8 +9,8 @@ import vo.Album;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service("albumService")
 @Repository
@@ -33,6 +33,7 @@ public class AlbumServiceImpl implements AlbumService {
         return albumDao.getAlbum(id);
     }
 
+    @Transactional(readOnly=true)
     @Override
     public List<Album> finAllAlbums() {
         List<Album> albums = entityManager.createNamedQuery("Album.findAllAlbums", Album.class).getResultList();
