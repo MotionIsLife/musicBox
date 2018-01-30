@@ -34,6 +34,7 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    @Transactional
     public List<Album> finAllAlbums() {
         List<Album> albums = entityManager.createNamedQuery("Album.findAllAlbums", Album.class).getResultList();
         return albums;
