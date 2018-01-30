@@ -1,7 +1,8 @@
 package vo;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "ALBUM")
@@ -12,6 +13,7 @@ public class Album {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "music_group")
@@ -22,6 +24,9 @@ public class Album {
 
     @Column(name = "year")
     private String year;
+
+    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Track> tracks = new HashSet<Track>();
 
     public Album() { }
 
@@ -53,6 +58,22 @@ public class Album {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public Set<Track> getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(Set<Track> tracks) {
+        this.tracks = tracks;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Override

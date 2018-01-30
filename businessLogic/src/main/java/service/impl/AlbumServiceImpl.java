@@ -1,7 +1,5 @@
 package service.impl;
 
-import dao.AlbumDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import service.AlbumService;
@@ -20,17 +18,13 @@ public class AlbumServiceImpl implements AlbumService {
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Autowired
-    private AlbumDao albumDao;
-
     @Override
     public void createAlbum(Album album) {
-        albumDao.createAlbum(album);
     }
 
     @Override
     public Album getAlbum(long id) {
-        return albumDao.getAlbum(id);
+        return null;
     }
 
     @Transactional(readOnly=true)
@@ -42,11 +36,9 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public void updateAlbum(Album album) {
-        albumDao.updateAlbum(album);
     }
 
     @Override
     public void deleteAlbum(long id) {
-        albumDao.deleteAlbum(id);
     }
 }
